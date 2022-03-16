@@ -40,4 +40,24 @@ def get_regression_plot(species)
     #    get_regression_plot(taxon)
 
 if __name__ == '__main__':
-    main()
+  
+
+
+    dataframe = pd.read_csv("iris.csv")
+    versicolor = dataframe[dataframe.species == "Iris_versicolor"]
+    virginica = dataframe[dataframe.species == "Iris_virginica"]
+    setosa = dataframe[dataframe.species == "Iris_setosa"]
+
+    x1 = versicolor.petal_length_cm
+    y1 = versicolor.sepal_length_cm
+    x2 = virginica.petal_length_cm
+    y2 = virginica.sepal_length_cm
+    x3 = setosa.petal_length_cm
+    y3 = setosa.sepal_length_cm
+
+    result1 = get_regression_line(x1, y1)
+    result2 = get_regression_line(x2, y2)
+    result3 = get_regression_line(x3, y3)
+    plt.savefig("all_species_together.png")
+    plt.close('all')
+    quit()
